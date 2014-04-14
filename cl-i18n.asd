@@ -20,42 +20,41 @@
   :licence "LLGPL"
   :description "A gettext-style internationalisation framework for Common Lisp."
   :depends-on (:alexandria
-	       :cl-ppcre-unicode
-	       :osicat
-	       :babel)
+               :cl-ppcre-unicode
+               :babel)
   :components ((:file "package")
-	       (:file "function-name"
+               (:file "function-name"
+                      :depends-on ("package"))
+               (:file "utils"
+                      :depends-on ("package"))
+               (:file "conditions"
 		      :depends-on ("package"))
-	       (:file "utils"
-		      :depends-on ("package"))
-	       (:file "conditions"
-		      :depends-on ("package"))
-	       (:file "buffered-input-file"
-		      :depends-on ("utils"
-				   "conditions"
-				   "package"))
-	       (:file "plural-forms"
-		      :depends-on ("package"))
-	       (:file "translation-class"
-		      :depends-on ("plural-forms"))
-	       (:file "parser"
-		      :depends-on ("buffered-input-file"))
+               (:file "buffered-input-file"
+                      :depends-on ("utils"
+                                   "conditions"
+                                   "package"))
+               (:file "plural-forms"
+                      :depends-on ("package"))
+               (:file "translation-class"
+                      :depends-on ("plural-forms"))
+               (:file "parser"
+                      :depends-on ("buffered-input-file"))
 
-	       (:file "utx-file"
-		      :depends-on ("parser"
-				   "translation-class"))
-	       
-	       (:file "pofile"
-		      :depends-on ("parser"
-				   "translation-class"))
+               (:file "utx-file"
+                      :depends-on ("parser"
+                                   "translation-class"))
+               
+               (:file "pofile"
+                      :depends-on ("parser"
+                                   "translation-class"))
 
-	       (:file "mofile"
-		      :depends-on ("pofile"))
+               (:file "mofile"
+                      :depends-on ("pofile"))
                (:file "base" 
-		      :depends-on ("plural-forms"
-				   "translation-class"
-				   "utx-file"
-				   "mofile"))
+                      :depends-on ("plural-forms"
+                                   "translation-class"
+                                   "utx-file"
+                                   "mofile"))
                (:file "i18n-utils" 
-		      :depends-on ("base"))))
+                      :depends-on ("base"))))
 
